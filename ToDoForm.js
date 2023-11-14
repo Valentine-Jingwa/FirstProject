@@ -19,15 +19,24 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
 });
+const ToDoForm = ({ addTask }) => {
+    const [taskText, setTaskText] = useState('');
 
-const ToDoForm = () => {
     return (
         <View style={styles.form}>
             <TextInput
                 style={styles.input}
                 placeholder="Add a new task..."
+                onChangeText={setTaskText}
+                value={taskText}
             />
-            <Button title="Add" />
+            <Button
+                title="Add"
+                onPress={() => {
+                    addTask(taskText);
+                    setTaskText(''); // Clear the input field after adding the task
+                }}
+            />
         </View>
     );
 };

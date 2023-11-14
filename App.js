@@ -1,17 +1,27 @@
 // App.js
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native';
-import ToDoList from './ToDoList'; // Make sure this is imported if not already
-import ToDoForm from './ToDoForm'; // Import ToDoForm component
+import ToDoList from './ToDoList';
+import ToDoForm from './ToDoForm';
 
 export default function App() {
+    const [tasks, setTasks] = useState([
+        { task: 'Learn React Native', index: 1 },
+        { task: 'Learn React', index: 2 },
+        { task: 'Learn JavaScript', index: 3 },
+    ]);
+
+    const addTask = (taskText) => {
+        // Check for empty or duplicate tasks
+        if(taskText && !tasks.some(task => task.task === taskText)) {
+            setTasks([...tasks, { task: taskText, index: tasks.length + 1 }]);
+        }
+    };
+
     return (
         <SafeAreaView>
-            <ToDoList />
-            {/* Use ToDoForm component */}
-            <ToDoForm />
+            <ToDoList tasks={tasks} />
+            <ToDoForm addTask={addTask} />
         </SafeAreaView>
     );
 }
-
-
