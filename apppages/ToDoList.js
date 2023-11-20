@@ -1,6 +1,6 @@
 // ToDoList.js
 import React from 'react';
-import { Pressable, View, Text, ScrollView, StyleSheet } from 'react-native';
+import { Pressable, View, Text, ScrollView, StyleSheet, FlatList, Button } from 'react-native';
 
 // Define your styles if they are not imported from an external file
 const styles = StyleSheet.create({
@@ -17,16 +17,19 @@ const styles = StyleSheet.create({
     },
 });
 
-const ToDoList = ({ tasks }) => {
+const ToDoList = ({ tasks, deleteTask }) => {
     return (
         <ScrollView>
-            {tasks.map((task, index) => (
-                <Pressable key={task.index}>
-                    <View style={styles.task}>
-                        <Text style={styles.taskText}>{task.task}</Text>
+            <FlatList
+                data={tasks}
+                renderItem={({ item }) => (
+                    <View>
+                        <Text>{item.task}</Text>
+                        <Button title="X" onPress={() => deleteTask(item.index)} />
                     </View>
-                </Pressable>
-            ))}
+                )}
+                keyExtractor={item => item.index.toString()}
+            />
         </ScrollView>
     );
 };

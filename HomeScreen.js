@@ -1,15 +1,18 @@
-import { Button, View, Text } from 'react-native';
+import { Button, ScrollView, Text } from 'react-native';
 import HomeScreenContent from './apppages/HomeSceenContent';
+import { SafeAreaView } from 'react-native-safe-area-context';
 // Create a Home Screen
 export default function HomeScreen({ navigation }) {
     return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Home Screen</Text>
-        <HomeScreenContent/>
-        <Button
-          title="About Page"
-          onPress={() => navigation.navigate('Details')}
-        />
-      </View>
+        <SafeAreaView>
+            <ScrollView contentContainerStyle={{ alignItems: 'center', justifyContent: 'center' }}>
+                <Text>Home Screen</Text>
+                <HomeScreenContent/>
+                <Button
+                    title="About Page"
+                    onPress={() => navigation.navigate('Details')}
+                />
+            </ScrollView>
+        </SafeAreaView>
     );
-  }
+}

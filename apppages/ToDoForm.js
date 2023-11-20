@@ -6,13 +6,13 @@ import { View, TextInput, Button, StyleSheet } from 'react-native';
 const styles = StyleSheet.create({
     form: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
+        justifyContent: 'space-around',
         alignItems: 'center',
         marginHorizontal: 20,
         marginTop: 20,
     },
     input: {
-        flex: 1,
+        width: '60%',
         borderWidth: 1,
         borderColor: '#ccc',
         paddingHorizontal: 10,
@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
 });
+
 const ToDoForm = ({ addTask }) => {
     const [taskText, setTaskText] = useState('');
 

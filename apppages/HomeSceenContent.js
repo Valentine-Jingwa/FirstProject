@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native';
 import ToDoList from './ToDoList';
 import ToDoForm from './ToDoForm';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function HomeScreenContent() {
     const [tasks, setTasks] = useState([
@@ -17,12 +18,17 @@ export default function HomeScreenContent() {
             setTasks([...tasks, { task: taskText, index: tasks.length + 1 }]);
         }
     };
+    
+    const deleteTask = (index) => {
+        setTasks(tasks.filter(task => task.index !== index));
+    };
 
     return (
         <SafeAreaView>
-            <ToDoForm addTask={addTask} />
-            <ToDoList tasks={tasks} />
-            
+            <ScrollView>
+                <ToDoForm addTask={addTask} />
+                <ToDoList tasks={tasks} deleteTask={deleteTask} />
+            </ScrollView>
         </SafeAreaView>
     );
 }
