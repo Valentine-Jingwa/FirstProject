@@ -1,27 +1,22 @@
-// App.js
-import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native';
-import ToDoList from './ToDoList';
-import ToDoForm from './ToDoForm';
+import * as React from 'react';
+import { Button, View, Text } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import AboutScreen from './AboutScreen';
+import HomeScreen from './HomeScreen';
 
-export default function App() {
-    const [tasks, setTasks] = useState([
-        { task: 'Learn React Native', index: 1 },
-        { task: 'Learn React', index: 2 },
-        { task: 'Learn JavaScript', index: 3 },
-    ]);
+// Create the stack navigator
+const Stack = createStackNavigator();
 
-    const addTask = (taskText) => {
-        // Check for empty or duplicate tasks
-        if(taskText && !tasks.some(task => task.task === taskText)) {
-            setTasks([...tasks, { task: taskText, index: tasks.length + 1 }]);
-        }
-    };
-
-    return (
-        <SafeAreaView>
-            <ToDoList tasks={tasks} />
-            <ToDoForm addTask={addTask} />
-        </SafeAreaView>
-    );
+function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={AboutScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
+
+export default App;
