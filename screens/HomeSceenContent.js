@@ -1,6 +1,5 @@
 // App.js
 import React, { useState } from 'react';
-import { SafeAreaView } from 'react-native';
 import ToDoList from '../components/ToDoList';
 import ToDoForm from '../components/ToDoForm';
 import { ScrollView } from 'react-native-gesture-handler';
