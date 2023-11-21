@@ -1,8 +1,8 @@
 // App.js
 import React, { useState } from 'react';
 import { SafeAreaView } from 'react-native';
-import ToDoList from './ToDoList';
-import ToDoForm from './ToDoForm';
+import ToDoList from '../components/ToDoList';
+import ToDoForm from '../components/ToDoForm';
 import { ScrollView } from 'react-native-gesture-handler';
 
 export default function HomeScreenContent() {
@@ -24,11 +24,11 @@ export default function HomeScreenContent() {
     };
 
     return (
-        <SafeAreaView>
+
             <ScrollView>
                 <ToDoForm addTask={addTask} />
                 <ToDoList tasks={tasks} deleteTask={deleteTask} />
             </ScrollView>
-        </SafeAreaView>
+
     );
 }
